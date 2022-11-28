@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Slip(models.Model):
+class SlipModel(models.Model):
     slip_id = models.AutoField(primary_key=True)
 
     def __str__(self):
