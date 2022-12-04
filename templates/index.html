@@ -1,9 +1,8 @@
 {% extends 'basic.html' %}
-<!-- {% for slip in slip_id %}
-{{slip.0.slip_id}}
-{% endfor %} -->
 {% block title %} New Slip {% endblock %}
 {% block css %}
+{% load static %}
+<!-- <link rel="stylesheet" href="{% static 'cssfiles/style.css'%}"> -->
 <style>
   .row {
     --bs-gutter-x: -0.5rem;
@@ -26,13 +25,13 @@
   <div class="row">
     {% for item in item %}
     <div class="card my-4" style="width: 18rem;">
-      <img src="/media/{{item.image}}" style="height: 280px;align-content: center;" class="card-img-top" alt="{{item.item_name}}">
+      <img src="/media/{{item.image}}" style="height: 280px; align-content: center;" class="card-img-top" alt="{{item.item_name}}">
       <div class="card-body">
         <h5 class="card-title">{{item.item_name}}</h5>
         <h6 class="card-text">Dryclean: &#8377;{{item.price}}</h6>
         <h6 class="card-text">Press: &#8377;{{item.price_press}}</h6>
-        <button class="btn btn-primary" name="dryclean" id="dryclean">Dryclean</button>
-        <button class="btn btn-primary" name="press" id="press">Press</button>
+        <button class="btn btn-primary mt-2">Dryclean</button>
+        <button class="btn btn-primary mt-2">Press</button>
       </div>
     </div>
     {% if forloop.counter|divisibleby:4 %}
@@ -41,7 +40,9 @@
     {% endif %}
     {% endfor%}
   </div>
-</div>
 {% endfor %}
 </div>
+{% endblock %}
+{% block js %}
+<!-- <script src="{% static 'jsfiles/script.js' %}"></script> -->
 {% endblock %}

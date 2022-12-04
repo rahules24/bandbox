@@ -22,4 +22,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="Index"),
+    path("slip/", views.slip, name="Slip"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

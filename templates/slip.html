@@ -1,0 +1,65 @@
+{% extends 'basic.html' %}
+{% block title %}New Slip{% endblock %}
+{% block css %}
+<style>
+.row {
+    --bs-gutter-x: -13.5rem;
+} 
+input:focus
+{
+    width: 93%;
+    outline:0px !important;
+    box-shadow: none !important;
+}
+input::-webkit-input-placeholder {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+}
+.border-bottom{
+    width: 93%;
+}
+</style>
+{% endblock %}
+{% block body %}
+<h1 align="center" style="color: red; font-family: 'Times New Roman', Times, serif;">BAND BOX</h1>
+<h4 align="center" style="color: blue; font-family: 'Times New Roman', Times, serif;">DRYCLEANERS</h4>
+<div class="container mt-4">
+    ITEMS:
+    <br>
+    TOTAL:
+    <form action="/slip/" method="post">
+        {% csrf_token %}
+        <input type="text" name="itemsJSON" id="itemsJSON">
+      <input type="number" name="amount" id="amount">
+<div class="row g-3" align="center">
+    <div class="col">
+      <input class="border-bottom border-0 form-control border-primary" type="text" name="address" id="address" placeholder="Address">
+    </div>
+    <div class="col">
+      <input class="border-bottom border-0 form-control border-danger" type="text" name="phone" id="phone" placeholder="Phone">
+    </div>
+    </div>
+<div class="row g-3 mt-4" align="center">
+    <div class="col">
+        <!-- <label for="date" style="font-family: serif; font-size:larger;">Date</label> -->
+      <input class="border-bottom border-0 form-control border-primary" type="date" name="date" id="date" placeholder="Date">
+    </div>
+    <div class="col">
+        <!-- <span style="font-family: serif; font-size:larger;">Due on Date</span> -->
+      <input class="border-bottom border-0 form-control border-danger" type="date" name="due-date" id="due-date" placeholder="Due on Date">
+    </div>
+    <p align="right">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </p>
+    </div>
+ 
+</form>
+</div>
+
+{% endblock %}
+{% block js %}
+<script>
+const element = document.getElementById('date');
+element.valueAsNumber = Date.now()-(new Date()).getTimezoneOffset()*60000;
+</script>
+{% endblock %}
